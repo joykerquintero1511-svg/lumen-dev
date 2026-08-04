@@ -1,0 +1,572 @@
+/* --- VARIABLES Y RESETEO BÁSICO --- */
+:root {
+    --bg-dark: #0f172a; /* Azul muy oscuro/elegante */
+    --text-light: #f8fafc;
+    --accent-color: #10b981; /* Verde esmeralda estilo tecnológico */
+    --accent-hover: #059669;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; /* Esto hace que la navegación sea suave */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* --- HEADER Y NAVEGACIÓN (ACTUALIZADO) --- */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* Cambiamos Flexbox por Grid para un centrado perfecto */
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+/* Contenedor del Logo y Texto */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Separación entre la imagen y el texto */
+}
+
+.logo {
+    height: 45px; 
+    width: auto;
+}
+
+/* Estilo del texto "LUMEN Dev" */
+.brand-text {
+    color: var(--text-light);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.brand-text strong {
+    color: var(--accent-color); /* Pinta la palabra "Dev" de verde */
+    font-weight: 700;
+}
+
+/* Navegación centrada */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 35px; /* Usamos 'gap' en lugar de margin para separar los enlaces de forma limpia */
+}
+
+.navbar a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--accent-color);
+}
+
+/* --- SECCIÓN HERO --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    padding-top: 80px; 
+    
+    /* MAGIA AQUÍ: Degradado + Imagen de fondo */
+    background-image: linear-gradient(to top, rgba(16, 185, 129, 0.8), rgba(15, 23, 42, 0.95)), url('../imagenes/fondoprg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Esto crea un efecto parallax suave al bajar */
+}
+
+/* --- TÍTULO PRINCIPAL (FUENTE TECH Y ANIMACIÓN DE ENTRADA) --- */
+.hero-content h1 {
+    font-family: 'Space Grotesk', sans-serif; /* Aplicamos la nueva fuente */
+    font-size: 4rem; /* Un poco más grande para impactar */
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: -1px; /* Junta un poco las letras (muy moderno) */
+    
+    /* Animación de entrada: aparece deslizándose desde arriba */
+    animation: slideDownFade 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* --- LA PALABRA CLAVE (EFECTO NEÓN) --- */
+.highlight {
+    color: var(--accent-color);
+    display: inline-block; /* Necesario para que las animaciones no rompan el texto */
+    
+    /* Animación infinita de latido brillante */
+    animation: neonPulse 2.5s infinite alternate;
+}
+
+/* --- ANIMACIONES (KEYFRAMES) --- */
+
+/* Efecto de latido de luz verde para la palabra "Iluminan" */
+@keyframes neonPulse {
+    0% {
+        text-shadow: 0 0 5px rgba(16, 185, 129, 0.2);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(16, 185, 129, 0.8), 
+                     0 0 30px rgba(16, 185, 129, 0.5);
+    }
+}
+
+/* Efecto de aparición suave y deslizamiento para el título completo */
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #fafafa;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- BOTONES --- */
+.btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.btn-primary {
+    background-color: var(--bg-dark);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--bg-dark);
+    transform: translateY(-3px); /* Pequeña animación al pasar el mouse */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--bg-dark);
+    border: 2px solid var(--bg-dark);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(16, 185, 129, 0.1);
+    transform: translateY(-3px);
+}
+
+/* --- SECCIÓN PORTAFOLIO --- */
+.portafolio {
+    padding: 100px 5%;
+    background-color: var(--bg-dark); /* Mantiene el fondo de tu web */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-align: center;
+    box-shadow: #fff 0px 2px 10px;
+    
+}
+
+.section-title span {
+    color: var(--accent-color); /* Pinta la palabra "Trabajo" de verde */
+}
+
+/* Cuadrícula adaptable (Bento-style) */
+.portafolio-grid {
+    display: grid;
+    /* Esto hace que las columnas se adapten solas al tamaño de la pantalla */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Espacio entre los proyectos */
+}
+
+/* Tarjeta individual del proyecto */
+.portafolio-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    aspect-ratio: 4 / 3; /* Obliga a que todas las cajas tengan la misma proporción */
+    cursor: pointer;
+}
+
+/* Estilos para que las imágenes y videos llenen la caja perfecta */
+.portafolio-item img,
+.portafolio-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Evita que las imágenes se deformen */
+    transition: transform 0.5s ease;
+}
+
+/* La capa oscura que sube al pasar el mouse */
+.overlay {
+    position: absolute;
+    bottom: -100%; /* La escondemos abajo */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(16, 185, 129, 0.9), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    transition: bottom 0.4s ease;
+}
+
+.overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.overlay p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* --- ANIMACIONES HOVER --- */
+.portafolio-item:hover .overlay {
+    bottom: 0; /* Sube la capa de texto */
+}
+
+.portafolio-item:hover img,
+.portafolio-item:hover video {
+    transform: scale(1.1); /* Hace un zoom suave a la imagen/video */
+}
+
+/* --- SERVICIOS --- */
+.servicios, .sobre-mi {
+    padding: 100px 5%;
+    background-color: var(--bg-dark);
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.servicio-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.servicio-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+}
+
+.servicio-card h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* --- SOBRE MÍ --- */
+.sobre-mi-contenido {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.perfil-texto p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+/* --- NUEVA CUADRÍCULA DE HABILIDADES --- */
+.skills-grid {
+    margin-top: 50px;
+    display: grid;
+    /* Crea columnas que se adaptan solas, mínimo 120px de ancho */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Diseño de la Tarjeta Individual */
+.skill-card {
+    background-color: rgba(30, 41, 59, 0.7); /* Fondo oscuro translúcido */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación con rebote suave */
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+/* Configuración de los logos dentro de la tarjeta */
+.skill-card img {
+    width: 50px; /* Tamaño del logo */
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.4));
+}
+
+.skill-card span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    transition: color 0.3s ease;
+}
+
+/* --- ANIMACIONES HOVER (EL EFECTO WOW) --- */
+.skill-card:hover {
+    transform: translateY(-10px); /* La tarjeta flota hacia arriba */
+    background-color: rgba(16, 185, 129, 0.15); /* Se tiñe un poco de tu verde LumenDev */
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2); /* Sombra brillante */
+}
+
+.skill-card:hover img {
+    transform: scale(1.15) rotate(5deg); /* El logo hace un zoom y gira ligeramente */
+}
+
+.skill-card:hover span {
+    color: var(--accent-color); /* El texto cambia al verde neón */
+}
+
+/* --- SECCIÓN CONTACTO --- */
+.contacto {
+    padding: 100px 5%;
+    background-color: var(--bg-dark);
+}
+
+.contacto-sub {
+    text-align: center;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.contacto-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* Formulario */
+.contacto-form {
+    background-color: rgba(30, 41, 59, 0.6);
+    padding: 35px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.btn-block {
+    width: 100%;
+    margin: 10px 0 0 0;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+/* Tarjetas de Información / Redes */
+.contacto-info h3 {
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(30, 41, 59, 0.6);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateX(8px);
+    border-color: var(--accent-color);
+    background-color: rgba(16, 185, 129, 0.1);
+}
+
+.info-icon {
+    font-size: 1.8rem;
+}
+
+.info-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+}
+
+.info-card p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+/* --- FOOTER --- */
+.footer {
+    padding: 30px 5%;
+    background-color: #090d16;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer strong span {
+    color: var(--accent-color);
+}
+
+.footer-sub {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* ======================================================
+   📱 DISEÑO RESPONSIVO (TELÉFONOS Y TABLETS)
+   ====================================================== */
+
+@media (max-width: 768px) {
+    /* --- 1. HEADER Y NAVEGACIÓN --- */
+    .header {
+        grid-template-columns: 1fr; /* Cambiamos a 1 sola columna */
+        justify-items: center; /* Centramos el logo y la marca */
+        padding: 15px 10px;
+        gap: 15px; /* Espacio entre el logo y el menú */
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .navbar {
+        flex-wrap: wrap; /* Si el menú no cabe, los enlaces pasan abajo ordenadamente */
+        gap: 15px;
+    }
+
+    .navbar a {
+        font-size: 0.85rem; /* Achicamos un poco la letra del menú */
+    }
+
+    /* --- 2. SECCIÓN HERO (INICIO) --- */
+    .hero {
+        padding-top: 140px; /* Damos más espacio porque el menú ahora ocupa 2 líneas */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Reducimos el título para que no se desborde del teléfono */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    /* Hacemos que los botones ocupen el ancho de la pantalla */
+    .btn {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+    }
+
+    /* --- 3. AJUSTES DE ESPACIADO GENERAL --- */
+    /* En móviles no queremos tanto espacio vacío, reducimos de 100px a 60px */
+    .portafolio, .servicios, .sobre-mi {
+        padding: 60px 5%; 
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* --- 4. CUADRÍCULAS (GRIDS) --- */
+    /* Forzamos a que el portafolio y los servicios se vean en 1 sola columna (uno debajo de otro) para mejor lectura */
+    .portafolio-grid, .servicios-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    /* Ajuste de contacto en móvil */
+    .contacto-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* Nota: La cuadrícula de Habilidades (skills-grid) NO la tocamos aquí 
+       porque gracias a tu 'minmax(120px)' se adaptará sola a 2 o 3 columnas 
+       perfectamente en teléfonos. ¡Pura magia CSS! */
+}
