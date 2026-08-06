@@ -570,3 +570,38 @@ body {
        porque gracias a tu 'minmax(120px)' se adaptará sola a 2 o 3 columnas 
        perfectamente en teléfonos. ¡Pura magia CSS! */
 }
+
+/* --- FONDO DE PARTÍCULAS NEÓN --- */
+#neonCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none; /* Evita que el fondo bloquee los clics */
+}
+
+/* --- SCROLL REVEAL (Aparición Suave) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* Curva suave y fluida */
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- PREPARACIÓN PARA 3D TILT --- */
+.portafolio-grid, .servicios-grid {
+    perspective: 1000px; /* Profundidad del efecto 3D */
+}
+
+/* Asegura que la transición de vuelta a la normalidad sea fluida */
+.servicio-card, .portafolio-item {
+    transition: transform 0.4s ease, border-color 0.3s ease;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
