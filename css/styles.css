@@ -632,3 +632,31 @@ body {
     margin: 0;
     overflow-x: hidden;
 }
+
+/* Estilos para iconos de marca */
+.info-icon {
+    font-size: 1.8rem;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Colores representativos */
+.whatsapp-icon {
+    color: #25D366;
+}
+
+.instagram-icon {
+    color: #E4405F;
+}
+
+.tiktok-icon {
+    color: #00F2FE; /* Tono cian distintivo de TikTok */
+}
+
+/* Efecto Hover opcional */
+.info-card:hover .info-icon {
+    transform: scale(1.15);
+}
