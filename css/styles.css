@@ -605,3 +605,30 @@ body {
     transform-style: preserve-3d;
     will-change: transform;
 }
+
+/* 1. Asegurar que el Canvas esté en el fondo y sea visible */
+#neonCanvas {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Detrás de todo el contenido */
+    pointer-events: none; /* No interfiere con clics */
+    background-color: #050509; /* Color de fondo muy oscuro aquí, si quieres */
+}
+
+/* 2. IMPORTANTE: Quitar fondos sólidos a las secciones */
+/* Revisa tu CSS y asegúrate de que .portafolio, .servicios, .sobre-mi, etc.,
+   NO tengan un background-color sólido. Cámbialos a transparent. */
+
+.portafolio, .servicios, .sobre-mi, .contacto, footer {
+    background-color: transparent !important; /* Volvemos transparentes las secciones */
+}
+
+/* El fondo principal de la web lo definimos solo en el body o en el canvas */
+body {
+    background-color: #050509; /* Un azul/negro muy oscuro de base */
+    margin: 0;
+    overflow-x: hidden;
+}
