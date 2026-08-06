@@ -661,9 +661,18 @@ body {
     transform: scale(1.15);
 }
 
-.portafolio-item  .portafolio-item video {
+.portafolio-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.portafolio-item iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    transform: translate(-50%, -50%) scale(1.35); /* El scale ayuda a eliminar los bordes negros de YouTube si los hay */
     pointer-events: none;
+    border: none;
 }
